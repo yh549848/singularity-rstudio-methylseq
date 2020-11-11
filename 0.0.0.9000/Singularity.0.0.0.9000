@@ -4,6 +4,9 @@ From: nickjer/singularity-rstudio:3.6.2
 %apprun pandoc
   exec pandoc "${@}"
 
+%apprun pandoc-citeproc
+  exec pandoc-citeproc "${@}"
+
 # Install RNA-seq packages
 %post
   R -e 'install.packages("BiocManager")' && \
@@ -17,8 +20,8 @@ From: nickjer/singularity-rstudio:3.6.2
   R -e 'BiocManager::install("rtracklayer")' && \
   R -e 'BiocManager::install("tximport")' && \
   R -e 'install.packages("devtools")' && \
-  R -e 'devtools::install_github("pachterlab/sleuth@v0.30.0")'
-  ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc /usr/local/bin
+  R -e 'devtools::install_github("pachterlab/sleuth@v0.30.0")' && \
+  ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc /usr/local/bin && \
   ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc-citeproc /usr/local/bin
 
 # Install Other packages
