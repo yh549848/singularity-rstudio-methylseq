@@ -1,23 +1,18 @@
-# Rstudio server with RNA-seq DE analysis packages
+# Rstudio server with BS-seq analysis package(s)
 
 This container was build based on [nickjer/singularity-rstudio:3.6.2](https://github.com/nickjer/singularity-rstudio).
 
 
 ## Packages included
 
-- ballgown
-- DESeq2
-- EBSeq
-- polyester
-- sleuth
-- tximport
+- methylKit
 
 
 
 ## Build
 
 ```bash
-sudo singularity build singularity-rstudio-rnaseqde.simg Singularity
+sudo singularity build rstudio-metylseq.sif Singularity
 ```
 
 
@@ -27,7 +22,7 @@ sudo singularity build singularity-rstudio-rnaseqde.simg Singularity
 1. Set password
 
 ```bash
-export RSTUDIO_PASSWORD=XXXXXXXX
+echo 'export RSTUDIO_PASSWORD=XXXXXXXX' >> $HOME/.bashrc
 ```
 
 2. Run Rstudio server
@@ -35,7 +30,7 @@ export RSTUDIO_PASSWORD=XXXXXXXX
    (a) Run on localhost
 
     ```bash
-    RSTUDIO_PASSWORD=${RSTUDIO_PASSWORD} singularity run singularity-rstudio-rnaseqde.simg \
+    RSTUDIO_PASSWORD=${RSTUDIO_PASSWORD} singularity run rstudio-metylseq.sif \
     --auth-none 0 \
     --auth-pam-helper rstudio_auth
     --www-port 8787
@@ -45,7 +40,7 @@ export RSTUDIO_PASSWORD=XXXXXXXX
    @NIG supercomputer (login node)
 
    ```bash
-    RSTUDIO_PASSWORD=${RSTUDIO_PASSWORD} singularity run singularity-rstudio-rnaseqde.simg \
+    RSTUDIO_PASSWORD=${RSTUDIO_PASSWORD} singularity run rstudio-metylseq.sif \
     --auth-none 0 \
     --auth-pam-helper rstudio_auth
     --www-port 58787 # MUST specify an unused port
