@@ -6,6 +6,7 @@ This container was build based on [nickjer/singularity-rstudio:3.6.2](https://gi
 ## Packages included
 
 - methylKit
+- genomation
 
 
 
