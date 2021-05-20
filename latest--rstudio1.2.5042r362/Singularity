@@ -7,6 +7,10 @@ From: nickjer/singularity-rstudio:3.6.2
 %apprun pandoc-citeproc
   exec pandoc-citeproc "${@}"
 
+%post
+  apt-get update && \
+  apt-get install -y less
+
 # Install RNA-seq packages
 %post
   R -e 'install.packages("BiocManager")' && \
