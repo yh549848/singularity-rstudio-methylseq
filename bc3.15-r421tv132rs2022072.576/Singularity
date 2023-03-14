@@ -15,6 +15,7 @@ From: ../../singularity-rstudio/rstudio_2022072.576-r421tv132.sif
   R -e 'BiocManager::install("clusterProfiler")' && \
   R -e 'BiocManager::install("genomation")' && \
   R -e 'BiocManager::install("GenomicRanges")' && \
+  R -e 'BiocManager::install("GenomicFeatures")' && \
   R -e 'BiocManager::install("GO.db")' && \
   R -e 'BiocManager::install("methylKit")' && \
   R -e 'BiocManager::install("rtracklayer")'
